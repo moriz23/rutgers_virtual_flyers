@@ -3,14 +3,14 @@
     <ul class="collection">
       {{#each results}}
         <li class="collection-item avatar">
-          <img src={{this.image_url}} alt="profile">
+          <img src= {{this.image_url}} alt="profile">
           <span class="right align">{{this.location.address}}<br />{{this.location.city}}, {{this.location.state_code}}, {{this.location.postal_code}} <br />{{this.display_phone}}</span>
-          <h5 class="title">{{this.name}}</h5>
-          <img src={{this.rating_img_url_large}} alt="rating" />
-          <p>{{this.categories}} <br>
-             {{this.snippet_text}}
-          </p>
+          <p class="title">{{this.name}}</p>
+          <img src= {{this.rating_img_url_large}} alt="rating" />
+          <p class="title">{{this.categories}}</p>
+          <div class="divider"></div>
+          <p>{{this.snippet_text}}</p>
         </li>
-        {{/each}}
+      {{/each}}
   </div>
 </div>

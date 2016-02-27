@@ -24,6 +24,9 @@ app.engine('handlebars', expressHandlebars({
 //SETTING VIEW TO ALL HANDLEBAR PAGES
 app.set('view engine', 'handlebars');
 
+//Serve static content for the app from the "public" directory in the application directory.
+app.use('/public', express.static(__dirname + "/public"));
+
 //BODYPARSER TO READ HTML
 app.use(bodyParser.urlencoded({
   extended: false
@@ -165,7 +168,7 @@ app.post('/yelp', function(req, res) {
     //console.log(data.businesses.id);
     var businesses = data.businesses;
 
-  res.render('yelp-results', {msg: req.query.msg, layout: 'yelp-layout', results: businesses});
+  res.render('yelp', {msg: req.query.msg, layout: 'yelp-layout', results: businesses});
 });
 });
 sequelize.sync().then(function() {
