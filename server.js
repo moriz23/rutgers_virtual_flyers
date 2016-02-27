@@ -11,7 +11,7 @@ var app               = express();
 var PORT = process.env.PORT || 8070;
 
 //CONNECTS TO DATABASE
-var sequelize = new Sequelize('rutgers_users_db', 'root')
+var sequelize = new Sequelize('rutgers_users_db', 'root');
 
 //SETTING DEFAULT LAYOUT TO MAIN.HANDLEBARS
 app.engine('handlebars', expressHandlebars({
@@ -48,7 +48,7 @@ passport.serializeUser(function(user, done) {
   done(null, user.id);
 });
 passport.deserializeUser(function(id, done) {
-  done(null, { id: id, username: id })
+  done(null, { id: id, username: id });
 });
 
 passport.use(new passportLocal.Strategy(
