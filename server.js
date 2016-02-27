@@ -11,7 +11,23 @@ var app               = express();
 var PORT = process.env.PORT || 8070;
 
 //CONNECTS TO DATABASE
-var sequelize = new Sequelize('rutgers_users_db', 'root')
+//var sequelize = new Sequelize('l3855uft9zao23e2.cbetxkdyhwsb.us-east-1.rds.amazonaws.com', 'slp8h1ua32q5t52m', 'fd41izpn61lizyyc');
+
+if(process.env.NODE_ENV === 'production') {
+  // HEROKU DB
+  console.log(process.env.JAWSDB_URL);
+  var sequelize = new Sequelize(process.env.JAWSDB_URL);
+} 
+else {
+  // LOCAL DB
+  var sequelize = new Sequelize('rutgers_users_db', 'root');
+}
+
+
+// var mysql = require('mysql');
+// var connection = mysql.createConnection(process.env.JAWSDB_URL);
+
+//connection.connect();
 
 //PUBLIC FOLDER
 app.use(express.static('public'));//this looks up the public folder, which contains the css folder and the styles.css file don't need to specify the actual file, because it will read all files inside the public folder
@@ -136,6 +152,10 @@ app.get('/', function(req, res) {
   res.render('login', {msg: req.query.msg});
 });
 
+app.get('/login', function(req, res) {
+  res.render('login', {msg: req.query.msg});
+});
+
 //ROUTE TO REGISTER
 app.get('/need_register', function(req, res) {
   res.render('register', {msg: req.query.msg});
@@ -150,6 +170,26 @@ app.get('/already_sign_up', function(req, res) {
      POST ROUTES
 *********************/
 
+<<<<<<< HEAD
+=======
+//creates user table and puts input into that table from user register
+app.post('/save', function(req, res) {
+  User.create(req.body).then(function(user){
+    req.session.authenticated = user;
+    res.redirect('/login');
+  }).catch(function(err){
+      res.redirect("/?msg=" + err);
+      console.log(err);
+  });
+});
+
+//login post leads user to main page
+app.post('/login', passport.authenticate('local', {
+  successRedirect: '/index',
+  failureRedirect: '/?msg=Login Credentials do not work'
+}));
+
+>>>>>>> ceab20e81dd119c0525ff18825db7a7d8a9439c1
 //sequelize.sync().then(function() {
   app.listen(PORT, function() {
     console.log("Listening on PORT %s", PORT);
