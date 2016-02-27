@@ -164,7 +164,7 @@ app.post('/save', function(req, res) {
 });
 
 //login post leads user to main page
-app.post('/login', passport.authenticate('student', {
+app.post('/login', passport.authenticate('local', {
   successRedirect: '/index',
   failureRedirect: '/?msg=Login Credentials do not work'
 }));
