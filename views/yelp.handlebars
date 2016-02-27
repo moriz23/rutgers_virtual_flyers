@@ -1,28 +1,16 @@
 <div class="container">
-  <div class="col s4">
-    <div class="card grey lighten-5">
-      <div class="card-content black-text">
-        <span class="card-title black-text">Lets Get Started!</span>
-        <form action="/yelp" method="POST">
-          <div class="row">
-            <div class="input-field col s12">
-              <input id="find" type="text" class="validate" name="find">
-              <label for="find">Find</label>
-            </div>
-            <div class="input-field col s12">
-              <input id="where" type="text" class="validate" name="where">
-              <label for="where">Where</label>
-            </div>
-            <button class="btn waves-effect waves-light lack" type="submit">Search
-              <i class="material-icons right">send</i>
-            </button>
-          </div>
-        </form>
-      </div>
-    </div>
+  <div class="row">
+    <ul class="collection">
+      {{#each results}}
+        <li class="collection-item avatar">
+          <img src={{this.image_url}} alt="profile">
+          <span class="right align">{{this.location.address}}<br />{{this.location.city}}, {{this.location.state_code}}, {{this.location.postal_code}} <br />{{this.display_phone}}</span>
+          <h5 class="title">{{this.name}}</h5>
+          <img src={{this.rating_img_url_large}} alt="rating" />
+          <p>{{this.categories}} <br>
+             {{this.snippet_text}}
+          </p>
+        </li>
+        {{/each}}
   </div>
-  <div class="col s2">
-
-  </div>
-</div>
 </div>

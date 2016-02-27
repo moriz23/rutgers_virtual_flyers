@@ -11,14 +11,31 @@
 </head>
 
 <body>
-  <nav>
-    <div class="nav-wrapper black">
-      <a href="#" class="brand-logo">Logo</a>
+<div class="row">
+  <div class="col s2">
+    <form action="/yelp" method="POST">
+      <div class="row">
+        <div class="input-field col s12">
+          <input id="find" type="text" class="validate" name="find">
+          <label for="find">Find</label>
+        </div>
+        <div class="input-field col s12">
+          <input id="where" type="text" class="validate" name="where">
+          <label for="where">Where</label>
+        </div>
+        <button class="btn waves-effect waves-light lack" type="submit">Search
+          <i class="material-icons right">send</i>
+        </button>
+      </div>
+    </form>
+  </div>
+  <div  class="col s10">
+      {{{body}}}
+  </div>
+</div>
 
-    </div>
-  </nav>
 
-  {{{body}}}
+
 
 
 </body>
