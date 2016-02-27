@@ -11,7 +11,12 @@ var app               = express();
 var PORT = process.env.PORT || 8070;
 
 //CONNECTS TO DATABASE
-var sequelize = new Sequelize('rutgers_users_db', 'root')
+var sequelize = new Sequelize('l3855uft9zao23e2.cbetxkdyhwsb.us-east-1.rds.amazonaws.com', 'slp8h1ua32q5t52m', 'fd41izpn61lizyyc');
+
+var mysql = require('mysql');
+var connection = mysql.createConnection(process.env.JAWSDB_URL);
+
+connection.connect();
 
 //SETTING DEFAULT LAYOUT TO MAIN.HANDLEBARS
 app.engine('handlebars', expressHandlebars({
@@ -164,8 +169,8 @@ app.post('/login', passport.authenticate('student', {
   failureRedirect: '/?msg=Login Credentials do not work'
 }));
 
-sequelize.sync().then(function() {
+//sequelize.sync().then(function() {
   app.listen(PORT, function() {
     console.log("Listening on PORT %s", PORT);
   });
-});
+//});
