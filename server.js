@@ -13,6 +13,9 @@ var PORT = process.env.PORT || 8070;
 //CONNECTS TO DATABASE
 var sequelize = new Sequelize('rutgers_users_db', 'root')
 
+//PUBLIC FOLDER
+app.use(express.static('public'));//don't need to specify the actual file, because it will read all files inside the css folder
+
 //SETTING DEFAULT LAYOUT TO MAIN.HANDLEBARS
 app.engine('handlebars', expressHandlebars({
   defaultLayout: 'main'
@@ -147,8 +150,8 @@ app.get('/already_sign_up', function(req, res) {
      POST ROUTES
 *********************/
 
-sequelize.sync().then(function() {
+//sequelize.sync().then(function() {
   app.listen(PORT, function() {
     console.log("Listening on PORT %s", PORT);
   });
-});
+//});
