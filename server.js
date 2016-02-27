@@ -11,12 +11,23 @@ var app               = express();
 var PORT = process.env.PORT || 8070;
 
 //CONNECTS TO DATABASE
-var sequelize = new Sequelize('l3855uft9zao23e2.cbetxkdyhwsb.us-east-1.rds.amazonaws.com', 'slp8h1ua32q5t52m', 'fd41izpn61lizyyc');
+//var sequelize = new Sequelize('l3855uft9zao23e2.cbetxkdyhwsb.us-east-1.rds.amazonaws.com', 'slp8h1ua32q5t52m', 'fd41izpn61lizyyc');
 
-var mysql = require('mysql');
-var connection = mysql.createConnection(process.env.JAWSDB_URL);
+if(process.env.NODE_ENV === 'production') {
+  // HEROKU DB
+  console.log(process.env.JAWSDB_URL);
+  var sequelize = new Sequelize(process.env.JAWSDB_URL);
+} 
+else {
+  // LOCAL DB
+  var sequelize = new Sequelize('rutgers_users_db', 'root');
+}
 
-connection.connect();
+
+// var mysql = require('mysql');
+// var connection = mysql.createConnection(process.env.JAWSDB_URL);
+
+//connection.connect();
 
 //SETTING DEFAULT LAYOUT TO MAIN.HANDLEBARS
 app.engine('handlebars', expressHandlebars({
@@ -158,7 +169,7 @@ app.post('/save', function(req, res) {
     req.session.authenticated = user;
     res.redirect('/login');
   }).catch(function(err){
-      res.redirect("/?msg=" + err.errors[0].message);
+      res.redirect("/?msg=" + err);
       console.log(err);
   });
 });
