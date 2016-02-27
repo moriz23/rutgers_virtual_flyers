@@ -10,8 +10,11 @@ var bodyParser        = require('body-parser');
 var app               = express();
 var PORT = process.env.PORT || 8070;
 
+//yelp-branch test
+var client = require("./api/yelp.js");
+
 //CONNECTS TO DATABASE
-var sequelize = new Sequelize('rutgers_users_db', 'root');
+var sequelize = new Sequelize('rutgers_users_db', 'root', '@pril2488');
 
 //SETTING DEFAULT LAYOUT TO MAIN.HANDLEBARS
 app.engine('handlebars', expressHandlebars({
@@ -143,10 +146,27 @@ app.get('/already_sign_up', function(req, res) {
   res.render('login', {msg: req.query.msg});
 });
 
+//ROUTE TO YELP
+app.get('/yelp', function(req, res) {
+  res.render('yelp', {msg: req.query.msg, layout: 'yelp-layout'});
+});
+
 /*********************
      POST ROUTES
 *********************/
+//POST TO YELP
+app.post('/yelp', function(req, res) {
+  client.search({
+    terms: req.body.find,
+    location: req.body.where,
+    limit: 10
+  }).then(function (data) {
+    //console.log(data.businesses.id);
+    var businesses = data.businesses;
 
+  res.render('yelp-results', {msg: req.query.msg, layout: 'yelp-layout', results: businesses});
+});
+});
 sequelize.sync().then(function() {
   app.listen(PORT, function() {
     console.log("Listening on PORT %s", PORT);

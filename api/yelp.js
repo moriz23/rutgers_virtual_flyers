@@ -14,9 +14,10 @@ var client = yelp.createClient({
     maxSockets: 25  // ~> Default is 10
   }
 });
+ module.exports = client;
 
 
-client.search({
+/*client.search({
   terms: "Brass Rail",
   location: "HOBOKEN",
   limit: 10
@@ -26,7 +27,7 @@ client.search({
   var location = data.region;
 
   // ...
-});
+});*?
 
 
 /*client.business("THE BRASS RAIL", {
