@@ -14,7 +14,7 @@ var PORT = process.env.PORT || 8070;
 var sequelize = new Sequelize('rutgers_users_db', 'root')
 
 //PUBLIC FOLDER
-app.use(express.static('public'));//don't need to specify the actual file, because it will read all files inside the css folder
+app.use(express.static('public'));//this looks up the public folder, which contains the css folder and the styles.css file don't need to specify the actual file, because it will read all files inside the public folder
 
 //SETTING DEFAULT LAYOUT TO MAIN.HANDLEBARS
 app.engine('handlebars', expressHandlebars({
