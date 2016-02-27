@@ -147,6 +147,23 @@ app.get('/already_sign_up', function(req, res) {
      POST ROUTES
 *********************/
 
+//creates user table and puts input into that table from user register
+app.post('/save', function(req, res) {
+  User.create(req.body).then(function(user){
+    req.session.authenticated = user;
+    res.redirect('/login');
+  }).catch(function(err){
+      res.redirect("/?msg=" + err.errors[0].message);
+      console.log(err);
+  });
+});
+
+//login post leads user to main page
+app.post('/login', passport.authenticate('student', {
+  successRedirect: '/index',
+  failureRedirect: '/?msg=Login Credentials do not work'
+}));
+
 sequelize.sync().then(function() {
   app.listen(PORT, function() {
     console.log("Listening on PORT %s", PORT);
