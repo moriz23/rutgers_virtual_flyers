@@ -169,8 +169,8 @@ app.post('/login', passport.authenticate('student', {
   failureRedirect: '/?msg=Login Credentials do not work'
 }));
 
-//sequelize.sync().then(function() {
+sequelize.sync().then(function() {
   app.listen(PORT, function() {
     console.log("Listening on PORT %s", PORT);
   });
-//});
+});
