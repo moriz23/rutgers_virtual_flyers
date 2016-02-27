@@ -156,8 +156,9 @@ app.get('/yelp', function(req, res) {
 *********************/
 //POST TO YELP
 app.post('/yelp', function(req, res) {
+  console.log(req.body);
   client.search({
-    terms: req.body.find,
+    term: req.body.find,
     location: req.body.where,
     limit: 10
   }).then(function (data) {
