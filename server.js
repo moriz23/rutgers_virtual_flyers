@@ -149,6 +149,10 @@ app.get('/', function(req, res) {
   res.render('login', {msg: req.query.msg});
 });
 
+app.get('/login', function(req, res) {
+  res.render('login', {msg: req.query.msg});
+});
+
 //ROUTE TO REGISTER
 app.get('/need_register', function(req, res) {
   res.render('register', {msg: req.query.msg});
