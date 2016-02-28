@@ -50,7 +50,7 @@ app.use(session({
     maxAge: 1000 * 60 * 60 * 24 * 14
   },
   saveUninitialized: true,
-  resave: false
+  resave: true
 }));
 
 /*********************
@@ -149,25 +149,34 @@ app.get('/', function(req, res) {
   res.render('login', {msg: req.query.msg});
 });
 
+//ROUTE TO LOGIN
 app.get('/login', function(req, res) {
   res.render('login', {msg: req.query.msg});
 });
 
-//ROUTE TO REGISTER
+//ROUTE TO REGISTER FROM LOGIN
 app.get('/need_register', function(req, res) {
   res.render('register', {msg: req.query.msg});
 });
 
-//ROUTE TO LOGIN
+//ROUTE TO LOGIN FROM REGISTER
 app.get('/already_sign_up', function(req, res) {
   res.render('login', {msg: req.query.msg});
+});
+
+//ROUTE TO INDEX
+app.get('/index', function(req, res){
+  res.render('index', {
+    user: req.user,
+    isAuthenticated: req.isAuthenticated()
+  });
 });
 
 /*********************
      POST ROUTES
 *********************/
 
-//creates user table and puts input into that table from user register
+//CREATES USER TABLE AND SAVES REGISTER INPUT INTO DB 
 app.post('/save', function(req, res) {
   User.create(req.body).then(function(user){
     req.session.authenticated = user;
@@ -178,14 +187,14 @@ app.post('/save', function(req, res) {
   });
 });
 
-//login post leads user to main page
+//LOGIN POST LEADS TO INDEX PAGE
 app.post('/login', passport.authenticate('local', {
   successRedirect: '/index',
   failureRedirect: '/?msg=Login Credentials do not work'
 }));
 
-//sequelize.sync().then(function() {
+sequelize.sync().then(function() {
   app.listen(PORT, function() {
     console.log("Listening on PORT %s", PORT);
   });
-//});
+});
