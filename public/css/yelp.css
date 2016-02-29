@@ -1,4 +1,8 @@
 .title{
-font-size: 50px;
+
   font-weight: 300;
+}
+
+#yelp-search {
+  text-align: center;
 }

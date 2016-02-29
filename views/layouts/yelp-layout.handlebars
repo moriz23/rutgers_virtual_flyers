@@ -19,33 +19,31 @@
       </ul>
     </div>
   </nav>
-<h1 class="title center align">What are you looking for?</h1>
-<div class="divider"></div>
-<div class="row">
-  <div class="col s2">
-    <form action="/yelp" method="POST">
-      <div class="row">
-        <div class="input-field col s12">
-          <input id="find" type="text" class="validate" name="find">
-          <label for="find">Find</label>
-        </div>
-        <div class="input-field col s12">
-          <input id="where" type="text" class="validate" name="where">
-          <label for="where">Where</label>
-        </div>
+  <form action="/yelp" method="POST">
+    <div class="row" id="yelp-search">
+      <div class="input-field col s2 offset-s3">
+        <input id="find" type="text" class="validate" name="find" required="true">
+        <label for="find">Find</label>
+      </div>
+      <div class="input-field col s2">
+        <input id="where" type="text" class="validate" name="where" required="true">
+        <label for="where">Where</label>
+      </div>
+      <div class="input-field col s2">
         <button class="btn waves-effect waves-light black" type="submit">Search
           <i class="material-icons right">send</i>
         </button>
       </div>
-    </form>
+    </div>
+  </form>
+  <div class="divider"></div>
+  <div class="container">
+    <div class="row">
+      <div class="col s8">
+        {{{body}}}
+      </div>
+    </div>
   </div>
-  <div  class="col s10">
-      {{{body}}}
-  </div>
-</div>
-
-
-
 
 
 </body>

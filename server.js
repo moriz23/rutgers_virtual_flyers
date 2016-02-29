@@ -165,7 +165,7 @@ app.post('/yelp', function(req, res) {
     location: req.body.where,
     limit: 10
   }).then(function (data) {
-    //console.log(data.businesses.id);
+    console.log(data.businesses);
     var businesses = data.businesses;
 
   res.render('yelp', {msg: req.query.msg, layout: 'yelp-layout', results: businesses});
