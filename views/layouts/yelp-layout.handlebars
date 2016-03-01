@@ -19,15 +19,12 @@
       </ul>
     </div>
   </nav>
+  <div class="container">
   <form action="/yelp" method="POST">
     <div class="row" id="yelp-search">
-      <div class="input-field col s2 offset-s3">
+      <div class="input-field col s4 offset-s3">
         <input id="find" type="text" class="validate" name="find" required="true">
         <label for="find">Find</label>
-      </div>
-      <div class="input-field col s2">
-        <input id="where" type="text" class="validate" name="where" required="true">
-        <label for="where">Where</label>
       </div>
       <div class="input-field col s2">
         <button class="btn waves-effect waves-light black" type="submit">Search
@@ -37,18 +34,15 @@
     </div>
   </form>
   <div class="divider"></div>
-  <div class="container">
     <div class="row">
-      <div class="col s8">
         {{{body}}}
-      </div>
-    </div>
   </div>
-
+</div>
 
 </body>
 
 <script src="https://code.jquery.com/jquery-2.2.1.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.5/js/materialize.min.js"></script>
+<script src="../public/javascripts/maps.js"></script>
 
 </html>

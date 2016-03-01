@@ -10,6 +10,9 @@ var bodyParser        = require('body-parser');
 var app               = express();
 var PORT = process.env.PORT || 8070;
 
+//google maps apo test
+
+
 //yelp-branch test
 var client = require("./api/yelp.js");
 
@@ -24,7 +27,7 @@ app.engine('handlebars', expressHandlebars({
 //SETTING VIEW TO ALL HANDLEBAR PAGES
 app.set('view engine', 'handlebars');
 
-//Serve static content for the app from the "public" directory in the application directory.
+//Serve static content for the app from the "public" directory
 app.use('/public', express.static(__dirname + "/public"));
 
 //BODYPARSER TO READ HTML
@@ -157,20 +160,21 @@ app.get('/yelp', function(req, res) {
 /*********************
      POST ROUTES
 *********************/
-//POST TO YELP
+//POST TO YELP**********************************
 app.post('/yelp', function(req, res) {
   console.log(req.body);
   client.search({
     term: req.body.find,
-    location: req.body.where,
+    location: 'New Brunswick, New Jersey',
     limit: 10
   }).then(function (data) {
-    console.log(data.businesses);
     var businesses = data.businesses;
 
   res.render('yelp', {msg: req.query.msg, layout: 'yelp-layout', results: businesses});
 });
 });
+
+//***************************************
 sequelize.sync().then(function() {
   app.listen(PORT, function() {
     console.log("Listening on PORT %s", PORT);
