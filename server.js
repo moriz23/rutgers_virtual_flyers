@@ -10,14 +10,11 @@ var bodyParser        = require('body-parser');
 var app               = express();
 var PORT = process.env.PORT || 8070;
 
-//google maps apo test
 
 
 //yelp-branch test
 var client = require("./api/yelp.js");
 
-//CONNECTS TO DATABASE
-var sequelize = new Sequelize('rutgers_users_db', 'root', '@pril2488');
 
 //SETTING DEFAULT LAYOUT TO MAIN.HANDLEBARS
 app.engine('handlebars', expressHandlebars({
