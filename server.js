@@ -10,11 +10,27 @@ var bodyParser        = require('body-parser');
 var app               = express();
 var PORT = process.env.PORT || 8070;
 
+//CONNECTS TO DATABASE
+//var sequelize = new Sequelize('l3855uft9zao23e2.cbetxkdyhwsb.us-east-1.rds.amazonaws.com', 'slp8h1ua32q5t52m', 'fd41izpn61lizyyc');
+
+if(process.env.NODE_ENV === 'production') {
+  // HEROKU DB
+  console.log(process.env.JAWSDB_URL);
+  var sequelize = new Sequelize(process.env.JAWSDB_URL);
+}
+else {
+  // LOCAL DB
+  var sequelize = new Sequelize('rutgers_users_db', 'root', '@pril2488');
+}
 
 
-//yelp-branch test
-var client = require("./api/yelp.js");
+// var mysql = require('mysql');
+// var connection = mysql.createConnection(process.env.JAWSDB_URL);
 
+//connection.connect();
+
+//Serve static content for the app from the "public" directory in the application directory.
+app.use('/public', express.static(__dirname + "/public"));
 
 //SETTING DEFAULT LAYOUT TO MAIN.HANDLEBARS
 app.engine('handlebars', expressHandlebars({
@@ -23,9 +39,6 @@ app.engine('handlebars', expressHandlebars({
 
 //SETTING VIEW TO ALL HANDLEBAR PAGES
 app.set('view engine', 'handlebars');
-
-//Serve static content for the app from the "public" directory
-app.use('/public', express.static(__dirname + "/public"));
 
 //BODYPARSER TO READ HTML
 app.use(bodyParser.urlencoded({
@@ -40,7 +53,7 @@ app.use(session({
     maxAge: 1000 * 60 * 60 * 24 * 14
   },
   saveUninitialized: true,
-  resave: false
+  resave: true
 }));
 
 /*********************
@@ -139,25 +152,63 @@ app.get('/', function(req, res) {
   res.render('login', {msg: req.query.msg});
 });
 
-//ROUTE TO REGISTER
+//ROUTE TO LOGIN
+app.get('/login', function(req, res) {
+  res.render('login', {msg: req.query.msg});
+});
+
+//ROUTE TO REGISTER FROM LOGIN
 app.get('/need_register', function(req, res) {
   res.render('register', {msg: req.query.msg});
 });
 
-//ROUTE TO LOGIN
+//ROUTE TO LOGIN FROM REGISTER
 app.get('/already_sign_up', function(req, res) {
   res.render('login', {msg: req.query.msg});
 });
 
-//ROUTE TO YELP
-app.get('/yelp', function(req, res) {
-  res.render('yelp', {msg: req.query.msg, layout: 'yelp-layout'});
+//ROUTE TO INDEX
+app.get('/index', function(req, res){
+  res.render('index', {
+    user: req.user,
+    isAuthenticated: req.isAuthenticated()
+  });
 });
 
 /*********************
      POST ROUTES
 *********************/
-//POST TO YELP**********************************
+
+//CREATES USER TABLE AND SAVES REGISTER INPUT INTO DB
+app.post('/save', function(req, res) {
+  User.create(req.body).then(function(user){
+    req.session.authenticated = user;
+    res.redirect('/login');
+  }).catch(function(err){
+      res.redirect("/?msg=" + err);
+      console.log(err);
+  });
+});
+
+//LOGIN POST LEADS TO INDEX PAGE
+app.post('/login', passport.authenticate('local', {
+  successRedirect: '/index',
+  failureRedirect: '/?msg=Login Credentials do not work'
+}));
+
+
+//yelp-branch test
+var client = require("./api/yelp.js");
+/*********************
+     GET Yelp
+*********************/
+app.get('/yelp', function(req, res) {
+  res.render('yelp', {msg: req.query.msg, layout: 'yelp-layout'});
+});
+
+/*********************
+     POST Yelp
+*********************/
 app.post('/yelp', function(req, res) {
   console.log(req.body);
   client.search({
@@ -167,11 +218,10 @@ app.post('/yelp', function(req, res) {
   }).then(function (data) {
     var businesses = data.businesses;
 
-  res.render('test-yelp', {msg: req.query.msg, layout: 'yelp-layout', results: businesses});
+  res.render('yelp', {msg: req.query.msg, layout: 'yelp-layout', results: businesses});
 });
 });
 
-//***************************************
 sequelize.sync().then(function() {
   app.listen(PORT, function() {
     console.log("Listening on PORT %s", PORT);
