@@ -1,3 +1,17 @@
+body{
+  background-color:#ebf0f3;
+
+}
+
+#yelp-nav{
+  background-color:#f5f8fa;
+}
+
+button{
+  background-color:#2B2B2B !important;
+  color:#F6F6F6 !important;
+}
+
 .title{
 
   font-weight: 300;
