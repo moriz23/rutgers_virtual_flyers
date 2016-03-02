@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.5/css/materialize.min.css">
+  <link rel="stylesheet" href="../public/css/yelp.css">
+  <title></title>
+
+</head>
+
+<body>
+  <nav>
+    <div class="nav-wrapper grey lighten-4">
+      <form action="/yelp" method="POST">
+        <div class="row" id="yelp-search">
+          <div class="input-field col s4 offset-s3 black-text">
+            <input id="find" type="text" class="validate" name="find" required="true">
+            <label for="find">Find:</label>
+          </div>
+          <div class="input-field col s3">
+            <button class="btn waves-effect waves-light black" type="submit">Search
+            </button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </nav>
+  <div class="container">
+
+    <div class="divider"></div>
+
+    {{{body}}}
+
+  </div>
+
+
+</body>
+
+<script src="https://code.jquery.com/jquery-2.2.1.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.5/js/materialize.min.js"></script>
+<script src="../public/javascripts/maps.js"></script>
+
+</html>
