@@ -9,11 +9,6 @@ router.get('/', function(req, res) {
 res.render('registration', {msg: req.query.msg});
 });
 
-//ROUTE TO LOGIN FROM REGISTER
-router.get('/login', function(req, res) {
-  res.render('login', {msg: req.query.msg});
-});
-
 //ROUTE TO INDEX
 router.get('/index', function(req, res){
   res.render('index', {
@@ -30,7 +25,7 @@ router.get('/index', function(req, res){
 router.post('/save', function(req, res) {
   User.create(req.body).then(function(user){
     req.session.authenticated = user;
-    res.redirect('/');
+    res.redirect('/index');
   }).catch(function(err){
       res.redirect("/?msg=" + err);
       console.log(err);
@@ -38,7 +33,7 @@ router.post('/save', function(req, res) {
 });
 
 //LOGIN POST LEADS TO INDEX PAGE
-router.post('/login', passport.authenticate('local', {
+router.post('/', passport.authenticate('local', {
   successRedirect: '/index',
   failureRedirect: '/?msg=Login Credentials do not work'
 }));

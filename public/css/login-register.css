@@ -1,3 +1,23 @@
+body{
+  background-color:#ebf0f3;
+
+}
+
 #register-title{
   padding-left: 19px;
+  color:#2B2B2B;
+;}
+
+#login{
+  background-color:#f5f8fa;
+}
+
+button{
+  background-color:#2B2B2B !important;
+  color:#F6F6F6 !important;
+}
+
+#registration{
+  background-color:#aab8c2;
+  border-radius: 5px;
 }

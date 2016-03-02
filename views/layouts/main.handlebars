@@ -9,32 +9,30 @@
 </head>
 
 <body>
-  <header class="row" id="login">
-      <form action="/login" method="POST">
-        <div class="input-field col s2 offset-s6 black-text">
-          <input type="text" required="true" id="exampleInputEmail1" name="username" class="validate">
-          <label for="username">Username</label>
-        </div>
-        <div class="input-field col s2  black-text">
-          <input type="password" id="exampleInputPassword1" name="password" required="true" class="validate">
-          <label for="password">Password</label>
-        </div>
-        <div class="input-field col s2">
-          <button class="btn waves-effect waves-light black" type="submit">Login</button>
-        </div>
-      </form>
-    </header>
-<div class="divider">
+  <nav class="row" id="login">
+    <a href="#" class="brand-logo black-text">SignPost</a>
+    <form action="/" method="POST">
+      <div class="input-field col s2 offset-s6 black-text">
+        <input type="text" required="true" id="exampleInputEmail1" name="username" class="validate" placeholder="User name">
+      </div>
+      <div class="input-field col s2  black-text">
+        <input type="password" id="exampleInputPassword1" name="password" required="true" class="validate" placeholder="Password">
+      </div>
+      <div class="input-field col s2">
+        <button class="btn waves-effect waves-light id" type="submit">Login</button>
+      </div>
+    </form>
+    <div class="divider"></div>
+  </nav>
 
-</div>
-    <div class="container" id="register">
+  <div class="container" id="register">
 
-      {{{body}}}
+    {{{body}}}
 
-    </div>
+  </div>
 
-    <script type="text/javascript" src="https://code.jquery.com/jquery-2.2.0.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.5/js/materialize.min.js"></script>
+  <script type="text/javascript" src="https://code.jquery.com/jquery-2.2.0.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.5/js/materialize.min.js"></script>
 </body>
 
 </html>
