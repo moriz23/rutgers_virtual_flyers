@@ -1,21 +1,40 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>Rutgers Virtual Flyers</title>
-    <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.5/css/materialize.min.css">
-  </head>
-  <body>
-    <nav class="navbar navbar-default">
-      <div class="container-fluid">
-        <div class="navbar-header">
-          <h1>Rutgers Virtual Flyers</h1>
-        </div>
-      </div>
-    </nav>
 
-    {{{body}}}
-    
+<head>
+  <title>Rutgers Virtual Flyers</title>
+  <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.5/css/materialize.min.css">
+  <link rel="stylesheet" href="../public/css/login-register.css">
+</head>
+
+<body>
+  <header class="row" id="login">
+      <form action="/login" method="POST">
+        <div class="input-field col s2 offset-s6 black-text">
+          <input type="text" required="true" id="exampleInputEmail1" name="username" class="validate">
+          <label for="username">Username</label>
+        </div>
+        <div class="input-field col s2  black-text">
+          <input type="password" id="exampleInputPassword1" name="password" required="true" class="validate">
+          <label for="password">Password</label>
+        </div>
+        <div class="input-field col s2">
+          <button class="btn waves-effect waves-light black" type="submit">Login</button>
+        </div>
+      </form>
+    </header>
+<div class="divider">
+
+</div>
+    <div class="container" id="register">
+
+      {{{body}}}
+
+    </div>
+
     <script type="text/javascript" src="https://code.jquery.com/jquery-2.2.0.min.js"></script>
-  </body>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.5/js/materialize.min.js"></script>
+</body>
+
 </html>
