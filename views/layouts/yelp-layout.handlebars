@@ -12,32 +12,29 @@
 
 <body>
   <nav>
-    <div class="nav-wrapper black">
-      <a href="#!" class="brand-logo">Logo</a>
-      <ul class="right hide-on-med-and-down">
-        <li><a href="badges.html"><i class="material-icons right">view_module</i>Link with Right Icon</a></li>
-      </ul>
+    <div class="nav-wrapper grey lighten-4">
+      <form action="/yelp" method="POST">
+        <div class="row" id="yelp-search">
+          <div class="input-field col s4 offset-s3 black-text">
+            <input id="find" type="text" class="validate" name="find" required="true">
+            <label for="find">Find:</label>
+          </div>
+          <div class="input-field col s3">
+            <button class="btn waves-effect waves-light black" type="submit">Search
+            </button>
+          </div>
+        </div>
+      </form>
     </div>
   </nav>
   <div class="container">
-  <form action="/yelp" method="POST">
-    <div class="row" id="yelp-search">
-      <div class="input-field col s4 offset-s3">
-        <input id="find" type="text" class="validate" name="find" required="true">
-        <label for="find">Find</label>
-      </div>
-      <div class="input-field col s2">
-        <button class="btn waves-effect waves-light black" type="submit">Search
-          <i class="material-icons right">send</i>
-        </button>
-      </div>
-    </div>
-  </form>
-  <div class="divider"></div>
-    <div class="row">
-        {{{body}}}
+
+    <div class="divider"></div>
+
+    {{{body}}}
+
   </div>
-</div>
+
 
 </body>
 

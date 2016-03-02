@@ -170,7 +170,7 @@ app.post('/yelp', function(req, res) {
   }).then(function (data) {
     var businesses = data.businesses;
 
-  res.render('yelp', {msg: req.query.msg, layout: 'yelp-layout', results: businesses});
+  res.render('test-yelp', {msg: req.query.msg, layout: 'yelp-layout', results: businesses});
 });
 });
 
