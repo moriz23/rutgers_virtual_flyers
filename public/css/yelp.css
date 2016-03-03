@@ -50,3 +50,10 @@ button, #btn-menu{
   height:300px;
   width: 100%;
 }
+
+input[type=range]+.thumb {
+  background-color: #2B2B2B !important;
+}
+ input[type=range].thumb{
+     background-color: #2B2B2B;
+ }
