@@ -1,1 +1,36 @@
-{{info.name}}
+<div class="row">
+  <div class="col s6">
+    <h3 class="title">{{info.name}}</h3>
+    <span><img src="{{info.rating_img_url}}" />
+       {{info.review_count}} reviews
+    </span>
+  </div>
+  <div class="col s3 offset-s3">
+    <p>{{info.location.address}}
+      <br />{{info.location.city}}, {{info.location.state_code}}, {{info.location.postal_code}}
+      <br />{{info.display_phone}}</p>
+  </div>
+</div>
+<div class="row">
+  <div class="col s6">
+    <div class="carousel">
+      <a class="carousel-item" href="#one!"><img src="{{info.image_url}}" /></a>
+      <a class="carousel-item" href="#one!"><img src="{{info.snippet_image_url}}" /></a>
+      <a class="carousel-item" href="#one!"><img src="{{info.image_url}}" /></a>
+    </div>
+  </div>
+  <div class="col s6">
+    <iframe width="100%" height="260" frameborder="0" style="border:0" src="https://www.google.com/maps/embed/v1/place?q={{info.location.display_address}}&key=AIzaSyCqHWFDIibdD6pRFtI0jSW-s2OU1XLa_jU" allowfullscreen></iframe>
+  </div>
+</div>
+<div class="row">
+  <div class="col s8">
+    {{#each info.reviews}}
+      <div class="review">
+        <span><img src="{{this.user.image_url}}" class="left align circle" id="profilepic"/>
+      {{this.user.name}} <br />
+      {{this.excerpt}}
+      <img src="{{this.rating_image_url}}" alt="rating" /></span>
+      </div>
+    {{/each}}
+  </div>
