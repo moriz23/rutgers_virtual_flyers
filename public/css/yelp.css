@@ -1,3 +1,24 @@
+nav ul a {
+  color: #2B2B2B !important;
+}
+nav .brand-logo {
+  color: #2B2B2B !important;
+}
+
+body{
+  background-color:#ebf0f3;
+
+}
+
+#yelp-nav{
+  background-color:#f5f8fa;
+}
+
+button, #btn-menu{
+  background-color:#2B2B2B !important;
+  color:#F6F6F6 !important;
+}
+
 .title{
 
   font-weight: 300;
@@ -19,3 +40,20 @@
 .map {
   margin-top: 9px;
 }
+
+#page-border {
+    background: #f5f8fa;
+    margin: 20px;
+}
+
+.carousel {
+  height:300px;
+  width: 100%;
+}
+
+input[type=range]+.thumb {
+  background-color: #2B2B2B !important;
+}
+ input[type=range].thumb{
+     background-color: #2B2B2B;
+ }

@@ -5,11 +5,15 @@
         <li class="collection-item avatar">
           <img src= {{this.image_url}} alt="profile">
           <span class="right align">{{this.location.address}}<br />{{this.location.city}}, {{this.location.state_code}}, {{this.location.postal_code}} <br />{{this.display_phone}}<br /><a class="waves-effect waves-light modal-trigger" href="#modal{{this.id}} ">Map it!</a></span>
-          <p class="title">{{this.name}}</p>
+          <form action="/business" method="get">
+            <a href="/{{this.id}}" value="{{this.id}}"><p class="title">{{this.name}}</p></a>
+          </form>
           <img src= {{this.rating_img_url_large}} alt="rating" />
+          {{#if this.categories }}
           <p class="title">{{this.categories}}</p>
+          {{/if}}
           <div class="divider"></div>
-          <p>{{this.snippet_text}}</p>
+          <!--<p>{{this.snippet_text}}</p>-->
         </li>
       {{/each}}
     </ul>
