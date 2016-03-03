@@ -46,8 +46,7 @@ button, #btn-menu{
     margin: 20px;
 }
 
-#profilepic{
-  padding: 10px;
-  height: 60px;
-  max-width: 100%;
+.carousel {
+  height:300px;
+  width: 100%;
 }
