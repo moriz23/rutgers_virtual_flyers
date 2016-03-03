@@ -2,9 +2,12 @@
   <div class="col s6">
     <h3 class="title">{{info.name}}</h3>
     <span><img src="{{info.rating_img_url}}" />
-       {{info.review_count}} reviews
+       {{info.review_count}} reviews<br />
+       {{info.categories}}
+
     </span>
   </div>
+  <div class="divider"></div>
   <div class="col s3 offset-s3">
     <p>{{info.location.address}}
       <br />{{info.location.city}}, {{info.location.state_code}}, {{info.location.postal_code}}
@@ -30,7 +33,8 @@
         <span><img src="{{this.user.image_url}}" class="left align circle" id="profilepic"/>
       {{this.user.name}} <br />
       {{this.excerpt}}
-      <img src="{{this.rating_image_url}}" alt="rating" /></span>
+      <img src="{{this.rating_image_url}}" alt="rating" class="align right"/></span>
       </div>
     {{/each}}
   </div>
+</div>

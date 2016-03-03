@@ -48,4 +48,6 @@ button, #btn-menu{
 
 #profilepic{
   padding: 10px;
+  height: 60px;
+  max-width: 100%;
 }
