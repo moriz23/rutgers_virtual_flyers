@@ -7,7 +7,7 @@ body{
   background-color:#f5f8fa;
 }
 
-button{
+button, #btn-menu{
   background-color:#2B2B2B !important;
   color:#F6F6F6 !important;
 }

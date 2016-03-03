@@ -4,6 +4,12 @@ var User = require('../models/user.js');
 var passport = require('../config/passport');
 var client = require("../api/yelp.js");
 
+var GoogleLocations = require('google-locations');
+
+var locations = new GoogleLocations('AIzaSyCqHWFDIibdD6pRFtI0jSW-s2OU1XLa_jU');
+
+
+
 //get routes
 router.get('/', function(req, res) {
 res.render('registration', {msg: req.query.msg});
@@ -60,6 +66,14 @@ router.post('/yelp', function(req, res) {
 
   res.render('yelp', {msg: req.query.msg, layout: 'yelp-layout', results: businesses});
 });
+});
+/*********************
+     POST Google Places
+*********************/
+router.post('/places', function(req, res) {
+
+
+  res.render('yelp', {msg: req.query.msg, layout: 'yelp-layout'});
 });
 
 module.exports = router;

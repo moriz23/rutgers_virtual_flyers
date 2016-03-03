@@ -11,26 +11,38 @@
 </head>
 
 <body>
-  <nav>
-    <div class="nav-wrapper" id="yelp-nav">
-      <form action="/yelp" method="POST">
-        <div class="row" id="yelp-search">
-          <div class="input-field col s4 offset-s3 black-text">
-            <input id="find" type="text" class="validate" name="find" required="true">
-            <label for="find">Find:</label>
-          </div>
-          <div class="input-field col s3">
-            <button class="btn waves-effect waves-light" type="submit">Search
-            </button>
-          </div>
-        </div>
-      </form>
+    <div class="fixed-action-btn horizontal click-to-toggle" style="bottom: 45px; right: 24px;">
+      <a class="btn-floating btn-large" id="btn-menu">
+        <i class="large mdi-navigation-menu"></i>
+      </a>
+      <ul>
+        <li><a class="btn-floating red"><i class="material-icons">insert_chart</i></a></li>
+        <li><a class="btn-floating yellow darken-1"><i class="material-icons">format_quote</i></a></li>
+        <li><a class="btn-floating green"><i class="material-icons">publish</i></a></li>
+        <li><a class="btn-floating blue"><i class="material-icons">attach_file</i></a></li>
+      </ul>
     </div>
-  </nav>
+
+  <header>
+    <form action="/yelp" method="POST">
+      <div class="row" id="yelp-search">
+        <div class="input-field col s4 offset-s3 black-text">
+          <input id="find" type="text" class="validate" name="find" required="true">
+          <label for="find">Find:</label>
+        </div>
+        <div class="input-field col s3">
+          <button class="btn waves-effect waves-light" type="submit">Search
+          </button>
+        </div>
+      </div>
+    </form>
+  </header>
   <div class="container">
 
     <div class="divider"></div>
+    <div id="map">
 
+    </div>
     {{{body}}}
 
   </div>
@@ -41,5 +53,6 @@
 <script src="https://code.jquery.com/jquery-2.2.1.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.5/js/materialize.min.js"></script>
 <script src="../public/javascripts/maps.js"></script>
+
 
 </html>
