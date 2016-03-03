@@ -53,6 +53,8 @@ app.use(session({
   resave: true
 }));
 
+app.use(express.static('public'));
+
 /*********************
      PASSPORT
 *********************/
@@ -95,7 +97,7 @@ passport.use(new passportLocal.Strategy(
      TABLE
 *********************/
 
-//Creating student table in student_instructor_db
+//CREATING RUTGERS USERS TABLE
 var User = sequelize.define('user', {
    username: {
       type: Sequelize.STRING,
@@ -140,36 +142,80 @@ var User = sequelize.define('user', {
   }
 });
 
+//CREATED REVIEWS TABLE 
+var Review = sequelize.define('review', {
+ comment: {
+    type: Sequelize.STRING,
+    allowNull: false
+  }
+});
+
 /*********************
      GET ROUTES
 *********************/
 
 //HOMEPAGE IS LOGIN
-app.get('/', function(req, res) {
-  res.render('login', {msg: req.query.msg});
-});
+// app.get('/', function(req, res) {
+//   res.render('login', {msg: req.query.msg});
+// });
 
 //ROUTE TO LOGIN
-app.get('/login', function(req, res) {
-  res.render('login', {msg: req.query.msg});
+// app.get('/home', function(req, res) {
+//   res.render('home', {msg: req.query.msg});
+// });
+
+// //ROUTE TO REGISTER FROM LOGIN
+// app.get('/need_register', function(req, res) {
+//   res.render('register', {msg: req.query.msg});
+// });
+
+// //ROUTE TO LOGIN FROM REGISTER
+// app.get('/already_sign_up', function(req, res) {
+//   res.render('login', {msg: req.query.msg});
+// });
+
+//ROUTE TO INDEX WITHOUT LOGGING IN OR REGESTERING
+app.get('/non-register', function(req, res) {
+  Review.findAll().then(function(reviews) {
+    res.render('index', {
+      reviews: reviews
+    });
+  }); 
 });
 
-//ROUTE TO REGISTER FROM LOGIN
-app.get('/need_register', function(req, res) {
-  res.render('register', {msg: req.query.msg});
+//HOMEPAGE 
+app.get('/', function(req, res) {
+  res.render('home', {msg: req.query.msg});
 });
 
-//ROUTE TO LOGIN FROM REGISTER
-app.get('/already_sign_up', function(req, res) {
-  res.render('login', {msg: req.query.msg});
-});
 
-//ROUTE TO INDEX
+//ROUTE TO INDEX SHOWS REVIEWS FOR BOTH LOG INS AND NON LOG INS
 app.get('/index', function(req, res){
-  res.render('index', {
-    user: req.user,
-    isAuthenticated: req.isAuthenticated()
+  Review.findAll().then(function(reviews) {
+    res.render('index', {
+      user: req.user,
+      isAuthenticated: req.isAuthenticated(),
+      reviews: reviews
+    });
   });
+});
+
+//GETTING USER REVIEWS INPUT
+app.get('/reviews', function(req, res) {
+  Review.findAll().then(function(reviews) {
+    res.render('index', {
+      user: req.user,
+      isAuthenticated: req.isAuthenticated(),
+      reviews: reviews
+
+    });
+  });
+});
+
+//LOGOUT
+app.get('/logout', function(req,res){
+  req.session.authenticated = false;
+  res.redirect('/');
 });
 
 /*********************
@@ -180,9 +226,9 @@ app.get('/index', function(req, res){
 app.post('/save', function(req, res) {
   User.create(req.body).then(function(user){
     req.session.authenticated = user;
-    res.redirect('/login');
+    res.redirect('/?msg=Account Created Please Log In');
   }).catch(function(err){
-      res.redirect("/?msg=" + err);
+      res.redirect("/?msg=" + err.errors[0].message);
       console.log(err);
   });
 });
@@ -192,6 +238,17 @@ app.post('/login', passport.authenticate('local', {
   successRedirect: '/index',
   failureRedirect: '/?msg=Login Credentials do not work'
 }));
+
+//REVIEWS POST
+app.post('/reviews', function(req, res) {
+    Review.create(req.body).then(function(review){
+    req.session.authenticated = review;
+    res.redirect('/index');
+  }).catch(function(err){
+      res.redirect("/?msg=" + err);
+      console.log(err);
+  });
+});
 
 sequelize.sync().then(function() {
   app.listen(PORT, function() {

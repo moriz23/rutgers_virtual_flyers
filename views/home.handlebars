@@ -1,16 +1,12 @@
   <header>
+    <!-- NAVBAR -->
     <nav>
       <div class="nav-wrapper red darken-4">
         <a href="#!" class="brand-logo">Rutgers Reviews </a>
         <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
         <ul class="right hide-on-med-and-down">
-          {{#if isAuthenticated}}
-            <li><a class="" href="/">Logout</a></li>
-          {{/if}}
-          {{#else}}
-            <li><a class=" modal-trigger" href="#modal1">Login</a></li>
-            <li><a class=" modal-trigger" href="#reg-modal">Register</a></li>
-          {{/else}}
+          <li><a class=" modal-trigger" href="#modal1">Login</a></li>
+          <li><a class=" modal-trigger" href="#reg-modal">Register</a></li>
         </ul>
         <ul class="side-nav" id="mobile-demo">
           <li><a href="">About</a></li>
@@ -22,31 +18,25 @@
   </header>
 
   <main>
-  {{#if isAuthenticated}}
-  <div class="row">
-    <form action="/reviews" class="col s12" method="post">
-      <div class="row">
-        <div class="input-field col s6 offset-s3">
-          <input class="validate" id="comment" name="comment" type="text"> <label for="comment">Add Review</label>
-        </div>
+    <img class="background-img responsive-img" src="https://cdn0.vox-cdn.com/thumbor/nD2noPpC7SeIf0bHAZ9AKlDXBsc=/0x19:3845x2582/1310x873/cdn0.vox-cdn.com/uploads/chorus_image/image/46280356/usa-today-8062233.0.jpg">
+
+    <div class="section" id="index-banner">
+      <div class="container">
+        <br><br>
+          <h1 class="header center white-text">WELCOME TO RUTGERS REVIEWS </h1>
+            <div class="row center">
+              <h5 class="header col s12 light">Find great places around Rutgers and see their reviews</h5>
+            </div>
+            <div class="row center">
+              <a href="/non-register" id="download-button" class="btn-large waves-effect waves-light red darken-4">Get Started</a>
+            </div>
+            <div class="row center">
+              <h3 id="msg">{{msg}}</h3>
+            </div>
       </div>
-      <div class="row">
-        <div class="input-field col s4 offset-s5">
-          <button class="btn waves-effect waves-light" type="submit" name="action">Add</button>
-        </div>
-      </div>
-    </form>
-  </div>
-  {{/if}}
+    </div>
 
-  <h1>Reviews</h1>
-    {{#each reviews}}
-    <h3>{{comment}}</h3>
-    <a href="/delete">delete</a>
-
-    {{/each}}
-
-     <!-- Login Modal Structure -->
+    <!-- Login Modal Structure -->
     <div id="modal1" class="modal">
       <div class="modal-content">
         <h4>Login</h4>
@@ -129,5 +119,3 @@
   <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.3/js/materialize.min.js"></script>
   <script type="text/javascript" src="/js/home.js"></script>
-
-
