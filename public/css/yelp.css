@@ -1,3 +1,10 @@
+nav ul a {
+  color: #2B2B2B !important;
+}
+nav .brand-logo {
+  color: #2B2B2B !important;
+}
+
 body{
   background-color:#ebf0f3;
 
@@ -7,7 +14,7 @@ body{
   background-color:#f5f8fa;
 }
 
-button{
+button, #btn-menu{
   background-color:#2B2B2B !important;
   color:#F6F6F6 !important;
 }
@@ -32,4 +39,14 @@ button{
 
 .map {
   margin-top: 9px;
+}
+
+#page-border {
+    background: #f5f8fa;
+    margin: 20px;
+}
+
+.carousel {
+  height:300px;
+  width: 100%;
 }
