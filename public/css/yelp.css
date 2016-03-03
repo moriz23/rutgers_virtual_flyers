@@ -1,3 +1,10 @@
+nav ul a {
+  color: #2B2B2B !important;
+}
+nav .brand-logo {
+  color: #2B2B2B !important;
+}
+
 body{
   background-color:#ebf0f3;
 
@@ -32,4 +39,9 @@ button, #btn-menu{
 
 .map {
   margin-top: 9px;
+}
+
+#page-border {
+    background: #f5f8fa;
+    margin: 20px;
 }

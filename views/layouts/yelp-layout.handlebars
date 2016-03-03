@@ -11,43 +11,49 @@
 </head>
 
 <body>
-    <div class="fixed-action-btn horizontal click-to-toggle" style="bottom: 45px; right: 24px;">
+  <nav>
+     <div class="nav-wrapper" id="yelp-nav">
+       <a href="#" class="brand-logo center" >SignPost</a>
+     </div>
+   </nav>
+
+
+  <div id="page-border">
+    <div class="fixed-action-btn vertical click-to-toggle" style="bottom: 45px; right: 24px;">
       <a class="btn-floating btn-large" id="btn-menu">
         <i class="large mdi-navigation-menu"></i>
       </a>
       <ul>
-        <li><a class="btn-floating red"><i class="material-icons">insert_chart</i></a></li>
-        <li><a class="btn-floating yellow darken-1"><i class="material-icons">format_quote</i></a></li>
-        <li><a class="btn-floating green"><i class="material-icons">publish</i></a></li>
+        <li><a class="btn-floating red" href="/index"><i class="material-icons">perm_identity</i></a></li>
+        <li><a class="btn-floating yellow darken-1" href="/yelp"><i class="material-icons">search</i></a></li>
+        <li><a class="btn-floating green" href="/"><i class="material-icons">info_outline</i></a></li>
         <li><a class="btn-floating blue"><i class="material-icons">attach_file</i></a></li>
       </ul>
     </div>
 
-  <header>
-    <form action="/yelp" method="POST">
-      <div class="row" id="yelp-search">
-        <div class="input-field col s4 offset-s3 black-text">
-          <input id="find" type="text" class="validate" name="find" required="true">
-          <label for="find">Find:</label>
-        </div>
-        <div class="input-field col s3">
-          <button class="btn waves-effect waves-light" type="submit">Search
-          </button>
-        </div>
-      </div>
-    </form>
-  </header>
-  <div class="container">
+    <div class="container">
+      <header>
+        <form action="/yelp" method="POST">
+          <div class="row" id="yelp-search">
+            <div class="input-field col s4 offset-s3 black-text">
+              <input id="find" type="text" class="validate" name="find" required="true">
+              <label for="find">Find:</label>
+            </div>
+            <div class="input-field col s3">
+              <button class="btn waves-effect waves-light" type="submit">Search
+              </button>
+            </div>
+          </div>
+        </form>
+      </header>
 
-    <div class="divider"></div>
-    <div id="map">
+      <div class="divider"></div>
+
+      {{{body}}}
 
     </div>
-    {{{body}}}
 
   </div>
-
-
 </body>
 
 <script src="https://code.jquery.com/jquery-2.2.1.min.js"></script>
