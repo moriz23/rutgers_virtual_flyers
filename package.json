@@ -24,8 +24,19 @@
     "express": "^4.13.4",
     "express-handlebars": "^3.0.0",
     "express-session": "^1.13.0",
+<<<<<<< HEAD
     "express-sessions": "^1.0.5",
+=======
+    "gmaps": "^0.4.22",
+    "google-locations": "^0.2.0",
+    "google-maps": "^3.2.1",
+    "google-maps-api": "^2.0.1",
+    "google-places": "0.0.2",
+    "googleapis": "^2.1.7",
+    "googlemaps": "^1.3.0",
+>>>>>>> 10994fa07de547a61c32c62d7e4802eec0eab210
     "mysql": "^2.10.2",
+    "node-yelp": "0.0.3",
     "passport": "^0.3.2",
     "passport-local": "^1.0.0",
     "sequelize": "^3.19.3"
