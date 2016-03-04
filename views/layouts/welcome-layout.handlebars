@@ -11,18 +11,17 @@
 </head>
 
 <body>
-  <!--<nav>
+  <nav class="navbar-fixed transparent">
     <div class="nav-wrapper" id="yelp-nav">
-      <a href="#" class="brand-logo" id="yelp-logo">SignPost</a>
-      <ul id="nav-mobile" class="right hide-on-med-and-down">
+      <ul id="nav-mobile" class="right">
         <li><a href="#">{{name}}</a></li>
         <li><a href="/logout">Sign Out</a></li>
       </ul>
       <form action="/yelp" method="POST">
         <div class="row" id="yelp-search">
-          <div class="input-field col s4 offset-s3 black-text">
+          <div class="input-field col s4 offset-s1 white-text">
             <input id="find" type="text" class="validate" name="find" required="true">
-            <label for="find">Find:</label>
+            <label class="white-text" for="find">Find:</label>
           </div>
           <div class="input-field col s2">
             <button class="btn waves-effect waves-light" type="submit">Search
@@ -31,7 +30,7 @@
         </div>
       </form>
     </div>
-  </nav>-->
+  </nav>
 
   <div class="fixed-action-btn vertical click-to-toggle" style="bottom: 45px; right: 24px;">
     <a class="btn-floating btn-large" id="btn-menu">
