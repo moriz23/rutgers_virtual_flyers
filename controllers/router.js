@@ -12,6 +12,9 @@ var Review = require('../models/review');
 
 //get routes
 router.get('/', function(req, res) {
+  if (req.user) {
+    res.redirect('/welcome');  
+  }
   res.render('registration', {
     msg: req.query.msg
   });
@@ -19,6 +22,10 @@ router.get('/', function(req, res) {
 
 //ROUTE TO INDEX
 router.get('/welcome', function(req, res) {
+  console.log(req.session);
+if (!req.user) {
+  res.redirect('/');
+}
   var username = req.user.id;
   res.render('welcome', {
     user: username,
