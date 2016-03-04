@@ -18,10 +18,13 @@ router.get('/', function(req, res) {
 });
 
 //ROUTE TO INDEX
-router.get('/index', function(req, res) {
-  res.render('index', {
-    user: req.user,
-    isAuthenticated: req.isAuthenticated()
+router.get('/welcome', function(req, res) {
+  var username = req.user.id;
+  res.render('welcome', {
+    user: username,
+    isAuthenticated: req.isAuthenticated(),
+    name: username,
+    layout: 'welcome-layout'
   });
 });
 
@@ -44,7 +47,7 @@ router.get('/index', function(req, res) {
 router.post('/save', function(req, res) {
   User.create(req.body).then(function(user) {
     req.session.authenticated = user;
-    res.redirect('/index');
+    res.redirect('/welcome');
   }).catch(function(err) {
     res.redirect("/?msg=" + err);
     console.log(err);
@@ -53,23 +56,18 @@ router.post('/save', function(req, res) {
 
 //LOGIN POST LEADS TO INDEX PAGE
 router.post('/', passport.authenticate('local', {
-  successRedirect: '/index',
+  successRedirect: '/welcome',
   failureRedirect: '/?msg=Login Credentials do not work'
 }));
 
 //REVIEWS POST
-router.post('/:business/reviews', function(req, res) {
+router.post('/reviews', function(req, res) {
 
     Review.create(req.body).then(function(review){
       var comment = req.body.comment;
       console.log(comment);
       req.session.authenticated = review;
-      res.redirect(BUSINESS_NAME);
-      res.render('yelp-business', {
-        reviews: comment,
-        layout: 'yelp-business'
-
-    });
+      res.redirect(url);
   }).catch(function(err){
       res.redirect("/?msg=" + err);
       console.log(err);
@@ -109,7 +107,7 @@ router.post('/yelp', function(req, res) {
 /*********************
      GET business
 *********************/
-router.get('/:business', function(req, res) {
+router.get('/business/:business', function(req, res) {
   var business = req.params.business;
   client.business(business, {
     cc: "US"
