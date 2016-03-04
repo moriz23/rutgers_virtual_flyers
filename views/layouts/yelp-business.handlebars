@@ -13,7 +13,19 @@
 <body>
   <nav>
     <div class="nav-wrapper" id="yelp-nav">
-      <a href="#" class="brand-logo center">SignPost</a>
+      <a href="#" class="brand-logo" id="yelp-logo">SignPost</a>
+      <form action="/yelp" method="POST">
+        <div class="row" id="yelp-search">
+          <div class="input-field col s4 offset-s3 black-text">
+            <input id="find" type="text" class="validate" name="find" required="true">
+            <label for="find">Find:</label>
+          </div>
+          <div class="input-field col s2">
+            <button class="btn waves-effect waves-light" type="submit">Search
+            </button>
+          </div>
+        </div>
+      </form>
     </div>
   </nav>
   <div class="fixed-action-btn vertical click-to-toggle" style="bottom: 45px; right: 24px;">
@@ -29,20 +41,6 @@
   </div>
   <div id="page-border">
     <div class="container">
-      <header>
-        <form action="/yelp" method="POST">
-          <div class="row" id="yelp-search">
-            <div class="input-field col s4 offset-s3 black-text">
-              <input id="find" type="text" class="validate" name="find" required="true">
-              <label for="find">Find:</label>
-            </div>
-            <div class="input-field col s3">
-              <button class="btn waves-effect waves-light" type="submit">Search
-              </button>
-            </div>
-          </div>
-        </form>
-      </header>
 
       <div class="divider"></div>
 
