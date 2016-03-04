@@ -6,7 +6,7 @@ var client = require("../api/yelp.js");
 var Review = require('../models/review');
 
 
-//get routes
+//GET Route signin/register
 router.get('/', function(req, res) {
   if (req.user) {
     res.redirect('/welcome');
@@ -17,7 +17,7 @@ router.get('/', function(req, res) {
   });
 });
 
-//ROUTE TO INDEX
+//ROUTE TO Welcome/Logged in
 router.get('/welcome', function(req, res) {
   if (!req.user) {
     res.redirect('/');
@@ -32,10 +32,15 @@ router.get('/welcome', function(req, res) {
   });
 });
 
-//Log Out
+//GET Log Out
 router.get('/logout', function(req, res) {
   req.logout();
   res.redirect('/');
+});
+
+//GET Log Out
+router.get('/profile/:user', function(req, res) {
+  res.send('yay!');
 });
 
 //GETTING USER REVIEWS INPUT
@@ -64,7 +69,7 @@ router.post('/save', function(req, res) {
   });
 });
 
-//LOGIN POST LEADS TO INDEX PAGE
+//LOGIN POST LEADS TO welcome PAGE
 router.post('/', passport.authenticate('local', {
   successRedirect: '/welcome',
   failureRedirect: '/?msg=Login Credentials do not work'
