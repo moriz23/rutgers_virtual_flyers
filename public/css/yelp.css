@@ -61,3 +61,12 @@ input[type=range]+.thumb {
  input[type=range].thumb{
      background-color: #2B2B2B;
  }
+
+ .splash{
+   background-color: Transparent !important;
+background-repeat:no-repeat !important;
+border: none !important;
+cursor:pointer !important;
+overflow: hidden !important;
+outline:none !important;
+ }

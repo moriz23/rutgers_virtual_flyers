@@ -103,7 +103,6 @@ router.get('/yelp', function(req, res) {
      POST Yelp
 *********************/
 router.post('/yelp', function(req, res) {
-  console.log(req.body);
   client.search({
     term: req.body.find,
     location: 'New Brunswick, New Jersey',
