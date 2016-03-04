@@ -38,10 +38,6 @@ router.get('/logout', function(req, res) {
   res.redirect('/');
 });
 
-//GET Log Out
-router.get('/profile/:user', function(req, res) {
-  res.send('yay!');
-});
 
 //GETTING USER REVIEWS INPUT
 // router.get('/reviews', function(req, res) {
