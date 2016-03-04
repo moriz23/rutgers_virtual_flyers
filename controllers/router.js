@@ -11,7 +11,7 @@ var locations = new GoogleLocations('AIzaSyCqHWFDIibdD6pRFtI0jSW-s2OU1XLa_jU');
 
 
 //get routes
-router.get('/cow', function(req, res) {
+router.get('/', function(req, res) {
   res.render('registration', {
     msg: req.query.msg
   });
@@ -71,7 +71,7 @@ router.post('/yelp', function(req, res) {
 
     res.render('yelp', {
       msg: req.query.msg,
-      layout: 'yelp-business',
+      layout: 'yelp-search',
       results: businesses
     });
   });
