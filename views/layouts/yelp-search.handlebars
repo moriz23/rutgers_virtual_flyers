@@ -8,17 +8,20 @@
   <link rel="stylesheet" href="../public/css/yelp.css">
   <title></title>
 
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 </head>
 
 <body>
-  <nav>
+  <nav class="navbar-fixed transparent">
     <div class="nav-wrapper" id="yelp-nav">
-      <a href="#" class="brand-logo" id="yelp-logo">SignPost</a>
+      <ul id="nav-mobile" class="right">
+        <li><a href="#">Welcome {{name}}</a></li>
+      </ul>
       <form action="/yelp" method="POST">
         <div class="row" id="yelp-search">
-          <div class="input-field col s4 offset-s3 black-text">
+          <div class="input-field col s4 offset-s1 black-text">
             <input id="find" type="text" class="validate" name="find" required="true">
-            <label for="find">Find:</label>
+            <label class="black-text" for="find">Find:</label>
           </div>
           <div class="input-field col s2">
             <button class="btn waves-effect waves-light" type="submit">Search
@@ -28,20 +31,16 @@
       </form>
     </div>
   </nav>
-  <header>
-    <div class="row" id="sort">
-    
-    </div>
-  </header>
+
   <div class="fixed-action-btn vertical click-to-toggle" style="bottom: 45px; right: 24px;">
     <a class="btn-floating btn-large" id="btn-menu">
       <i class="large mdi-navigation-menu"></i>
     </a>
     <ul>
-      <li><a class="btn-floating red" href="/index"><i class="material-icons">perm_identity</i></a></li>
+      <li><a class="btn-floating green" href="/profile/{{name}}" value="{{name}}"><i class="material-icons">perm_identity</i></a></li>
+      <li><a class="btn-floating red" href="/welcome"><i class="material-icons">language</i></a></li>
       <li><a class="btn-floating yellow darken-1" href="/yelp"><i class="material-icons">search</i></a></li>
-      <li><a class="btn-floating green" href="/"><i class="material-icons">info_outline</i></a></li>
-      <li><a class="btn-floating blue"><i class="material-icons">attach_file</i></a></li>
+      <li><a class="btn-floating blue" href="/logout"><i class="material-icons">replay</i></a></li>
     </ul>
   </div>
   <div id="page-border">

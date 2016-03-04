@@ -51,12 +51,15 @@
         </li>
       {{/each}}
     </ul>
+    <p>{{reviews}}</p>
+
   </div>
+
   <div class="col s4">
-    <form class="col s12" action="#">
+    <form class="col s12" action="/reviews" method="post"> 
       <div class="row">
         <div class="input-field col s12">
-          <textarea id="textarea1" class="materialize-textarea"></textarea>
+          <textarea id="textarea1" class="materialize-textarea" name="comment"></textarea>
           <label for="textarea1">Add Review</label>
           </label>
         </div>

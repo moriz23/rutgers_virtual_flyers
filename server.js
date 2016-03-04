@@ -1,16 +1,17 @@
 //NPM PACKAGES INSTALLED
-var express           = require('express');
+var express = require('express');
 var expressHandlebars = require('express-handlebars');
-var session           = require('express-session');
-var Sequelize         = require('sequelize');
-var bcrypt            = require('bcryptjs');
-var bodyParser        = require('body-parser');
-var app               = express();
+var session = require('express-session');
+var Sequelize = require('sequelize');
+var bcrypt = require('bcryptjs');
+var bodyParser = require('body-parser');
+var app = express();
 
 //format
 var sequelize = require('./config/connection');
 var passport = require('./config/passport');
 var User = require('./models/user');
+
 
 
 var PORT = process.env.PORT || 8070;
@@ -34,9 +35,9 @@ app.use(bodyParser.urlencoded({
 //CREATE SECRET FOR USER LOGIN
 app.use(session({
   secret: 'this is a secret',
-  cookie:{
+  cookie: {
     secure: false,
-    maxAge: 1000 * 60 * 60 * 24 * 14
+    maxAge: 1000 * 60 * 60
   },
   saveUninitialized: true,
   resave: true
@@ -48,7 +49,11 @@ app.use(passport.session());
 
 //ROUTES
 var routes = require('./controllers/router.js');
+var yelps = require('./controllers/yelp-router.js');
+var profile = require('./controllers/profile-router.js');
 app.use('/', routes);
+app.use('/', yelps);
+app.use('/', profile);
 
 
 sequelize.sync().then(function() {
