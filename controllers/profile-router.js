@@ -32,25 +32,15 @@ router.get('/profile/:user', function(req, res) {
 //GET Profile
 router.post('/profile/:user', function(req, res) {
   var name = req.user.id;
-  User = sequelize.define('user', {
-     Birthday: {
-        type: Sequelize.STRING,
-        allowNull: false,
-        unique: true,
-        validate:{
-          len:[1, 30]
-        }
-      },
-    }
-  ).then(function(data) {
-    console.log(data);
-    var user = data;
-    res.render('profile', {
-      user: user,
-      msg: req.query.msg,
-      layout: 'welcome-layout'
-    });
-  });
+  User.addColumn(
+  'users',
+  'location',
+  {
+    type: Sequelize.STRING,
+    allowNull: false,
+    defaultValue: 0
+  }
+);
 });
 
 module.exports = router;
