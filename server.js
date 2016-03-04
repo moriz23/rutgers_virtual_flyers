@@ -49,7 +49,9 @@ app.use(passport.session());
 
 //ROUTES
 var routes = require('./controllers/router.js');
+var yelps = require('./controllers/yelp-router.js');
 app.use('/', routes);
+app.use('/', yelps);
 
 
 sequelize.sync().then(function() {

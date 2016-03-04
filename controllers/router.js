@@ -3,10 +3,6 @@ var router = express.Router();
 var User = require('../models/user.js');
 var passport = require('../config/passport');
 var client = require("../api/yelp.js");
-
-var GoogleLocations = require('google-locations');
-
-var locations = new GoogleLocations('AIzaSyCqHWFDIibdD6pRFtI0jSW-s2OU1XLa_jU');
 var Review = require('../models/review');
 
 
@@ -23,10 +19,10 @@ router.get('/', function(req, res) {
 
 //ROUTE TO INDEX
 router.get('/welcome', function(req, res) {
-if (!req.user) {
-  res.redirect('/');
-  return;
-}
+  if (!req.user) {
+    res.redirect('/');
+    return;
+  }
   var username = req.user.id;
   res.render('welcome', {
     user: username,
@@ -37,7 +33,7 @@ if (!req.user) {
 });
 
 //Log Out
-router.get('/logout', function(req, res){
+router.get('/logout', function(req, res) {
   req.logout();
   res.redirect('/');
 });
@@ -77,62 +73,17 @@ router.post('/', passport.authenticate('local', {
 //REVIEWS POST
 router.post('/reviews', function(req, res) {
 
-    Review.create(req.body).then(function(review){
-      var comment = req.body.comment;
-      console.log(comment);
-      req.session.authenticated = review;
-      res.redirect(url);
-  }).catch(function(err){
-      res.redirect("/?msg=" + err);
-      console.log(err);
+  Review.create(req.body).then(function(review) {
+    var comment = req.body.comment;
+    console.log(comment);
+    req.session.authenticated = review;
+    res.redirect(url);
+  }).catch(function(err) {
+    res.redirect("/?msg=" + err);
+    console.log(err);
   });
 });
 
 
-/*********************
-     GET Yelp
-*********************/
-router.get('/yelp', function(req, res) {
-  res.render('yelp', {
-    msg: req.query.msg,
-    layout: 'yelp-search'
-  });
-});
-
-/*********************
-     POST Yelp
-*********************/
-router.post('/yelp', function(req, res) {
-  client.search({
-    term: req.body.find,
-    location: 'New Brunswick, New Jersey',
-    limit: 10
-  }).then(function(data) {
-    var businesses = data.businesses;
-
-    res.render('yelp', {
-      msg: req.query.msg,
-      layout: 'yelp-search',
-      results: businesses
-    });
-  });
-});
-/*********************
-     GET business
-*********************/
-router.get('/business/:business', function(req, res) {
-  var business = req.params.business;
-  client.business(business, {
-    cc: "US"
-  }).then(function(data) {
-    //console.log(data);
-
-    res.render('yelp-business', {
-      msg: req.query.msg,
-      layout: 'yelp-business',
-      info: data
-    });
-  });
-});
 
 module.exports = router;
