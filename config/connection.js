@@ -8,7 +8,7 @@ if(process.env.NODE_ENV === 'production') {
 }
 else {
   // LOCAL DB
-  var sequelize = new Sequelize('rutgers_users_db', 'root', '@pril2488');
+  var sequelize = new Sequelize('rutgers_users_db', 'root');
 }
 
 module.exports = sequelize;

@@ -8,7 +8,7 @@ var bcrypt = require('bcryptjs');
      TABLE
 *********************/
 
-//Creating student table in student_instructor_db
+//CREATING RUTGERS USERS TABLE
 var User = sequelize.define('user', {
    username: {
       type: Sequelize.STRING,
@@ -52,5 +52,7 @@ var User = sequelize.define('user', {
     }
   }
 });
+
+
 
 module.exports = User;
