@@ -14,13 +14,17 @@ body{
   background-color:#f5f8fa;
 }
 
+#yelp-logo {
+  padding-left: 25px;
+}
+
 button, #btn-menu{
   background-color:#2B2B2B !important;
   color:#F6F6F6 !important;
 }
 
 .title{
-
+font-size: 36px;
   font-weight: 300;
 }
 

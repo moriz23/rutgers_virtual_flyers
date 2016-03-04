@@ -2,14 +2,14 @@
   <div class="card-content black-text">
     <div class="row">
       <div class="col s6">
-        <h3 class="title">{{info.name}}</h3>
+        <p class="title">{{info.name}}</p>
         <span><img src="{{info.rating_img_url}}" id="rating-business"/>
        {{info.review_count}} reviews<br />
        {{info.categories}}
     </span>
       </div>
-      <div class="col s3 offset-s3">
-        <p>{{info.location.address}}
+      <div class="col s4 offset-s2">
+        <p class="right align">{{info.location.address}}
           <br />{{info.location.city}}, {{info.location.state_code}}, {{info.location.postal_code}}
           <br />{{info.display_phone}}</p>
       </div>
@@ -65,7 +65,7 @@
         <input type="range" id="test5" min="0" max="5" />
         <label for="idtest5">Rate It!</label>
       </p>
-        <button type="submit" class="btn waves black">Post!</button>
+      <button type="submit" class="btn waves black">Post!</button>
     </form>
   </div>
 </div>

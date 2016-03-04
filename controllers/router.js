@@ -11,7 +11,7 @@ var locations = new GoogleLocations('AIzaSyCqHWFDIibdD6pRFtI0jSW-s2OU1XLa_jU');
 
 
 //get routes
-router.get('/', function(req, res) {
+router.get('/cow', function(req, res) {
   res.render('registration', {
     msg: req.query.msg
   });
@@ -53,7 +53,7 @@ router.post('/', passport.authenticate('local', {
 router.get('/yelp', function(req, res) {
   res.render('yelp', {
     msg: req.query.msg,
-    layout: 'yelp-layout'
+    layout: 'yelp-search'
   });
 });
 
@@ -71,7 +71,7 @@ router.post('/yelp', function(req, res) {
 
     res.render('yelp', {
       msg: req.query.msg,
-      layout: 'yelp-layout',
+      layout: 'yelp-business',
       results: businesses
     });
   });
@@ -88,7 +88,7 @@ router.get('/:business', function(req, res) {
 
     res.render('yelp-business', {
       msg: req.query.msg,
-      layout: 'yelp-layout',
+      layout: 'yelp-business',
       info: data
     });
   });
