@@ -2,25 +2,38 @@ nav ul a {
   color: #2B2B2B !important;
 }
 nav .brand-logo {
-  color: #2B2B2B !important;
+  color: #fff !important;
 }
 
 body{
-  background-color:#ebf0f3;
-
+  background-color:#fff;
 }
 
-#yelp-nav{
-  background-color:#f5f8fa;
+nav .input-field label {
+  color: white;
 }
+
+
+/*#yelp-nav{
+  background-color: #b71c1c;
+}*/
 
 #yelp-logo {
   padding-left: 25px;
 }
 
-button, #btn-menu{
+/*button, #btn-menu{
+  background-color:#fff !important;
+  color:#b71c1c !important;
+}*/
+
+#yelp-btn {
+    color: #b71c1c;
+}
+
+button {
   background-color:#2B2B2B !important;
-  color:#F6F6F6 !important;
+  color: #b71c1c !important;
 }
 
 .title{
@@ -46,7 +59,7 @@ font-size: 36px;
 }
 
 #page-border {
-    background: #f5f8fa;
+    background: #b71c1c;
     margin: 20px;
 }
 

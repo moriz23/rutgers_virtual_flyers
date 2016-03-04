@@ -64,7 +64,6 @@ router.post('/:business/reviews', function(req, res) {
       var comment = req.body.comment;
       console.log(comment);
       req.session.authenticated = review;
-      res.redirect(BUSINESS_NAME)
       res.render('yelp-business', {
         reviews: comment,
         layout: 'yelp-business'

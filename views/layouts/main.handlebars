@@ -6,29 +6,47 @@
   <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.5/css/materialize.min.css">
   <link rel="stylesheet" href="../public/css/login-register.css">
+  <link href='https://fonts.googleapis.com/css?family=Chivo:400,900' rel='stylesheet' type='text/css'>
 </head>
 
 <body>
   <nav>
-    <div class="nav-wrapper" id="yelp-nav">
-      <a href="#" class="brand-logo black-text ">SignPost</a>
+    <div class="nav-wrapper red darken-4" id="yelp-nav">
+      <a href="#" class="brand-logo white-text ">Rutgers Reviews</a>
       <div class="row" id="login">
         <form action="/" method="POST">
-          <div class="input-field col s12 m2 offset-m6 black-text">
+          <div class="input-field col s12 m2 offset-m6 white-text">
             <input type="text" required="true" id="exampleInputEmail1" name="username" class="validate" placeholder="User name">
           </div>
-          <div class="input-field col s12 m2  black-text">
+          <div class="input-field col s12 m2  white-text">
             <input type="password" id="exampleInputPassword1" name="password" required="true" class="validate" placeholder="Password">
           </div>
           <div class="input-field col s12 m2">
-            <button class="btn waves-effect waves-light id" type="submit">Login</button>
+            <button class="btn waves-effect waves-light id white" type="submit">Login</button>
           </div>
         </form>
       </div>
     </div>
   </nav>
+  <img class="background-img responsive-img" src="https://cdn0.vox-cdn.com/thumbor/nD2noPpC7SeIf0bHAZ9AKlDXBsc=/0x19:3845x2582/1310x873/cdn0.vox-cdn.com/uploads/chorus_image/image/46280356/usa-today-8062233.0.jpg">
+
+  <div class="section" id="index-banner">
+    <div class="container">
+      <br><br>
+      <h1 class="header center white-text">WELCOME TO RUTGERS REVIEWS </h1>
+      <div class="row center">
+        <h5 class="header col s12 light">Find great places around Rutgers and see their reviews</h5>
+      </div>
+      <div class="row center">
+        <a href="/non-register" id="download-button" class="btn-large waves-effect waves-light red darken-4">Get Started</a>
+      </div>
+      <div class="row center">
+        <!--<h3 id="msg">{{msg}}</h3>-->          
+      </div>
+    </div>
+  </div>
   <div class="fixed-action-btn vertical click-to-toggle" style="bottom: 45px; right: 24px;">
-    <a class="btn-floating btn-large" id="btn-menu">
+    <a class="btn-floating btn-large red darken-4" id="btn-menu">
       <i class="large mdi-navigation-menu"></i>
     </a>
     <ul>
