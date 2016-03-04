@@ -7,11 +7,11 @@ var client = require("../api/yelp.js");
 var GoogleLocations = require('google-locations');
 
 var locations = new GoogleLocations('AIzaSyCqHWFDIibdD6pRFtI0jSW-s2OU1XLa_jU');
-
+var Review = require('../models/review');
 
 
 //get routes
-router.get('/cow', function(req, res) {
+router.get('/', function(req, res) {
   res.render('registration', {
     msg: req.query.msg
   });
@@ -24,6 +24,17 @@ router.get('/index', function(req, res) {
     isAuthenticated: req.isAuthenticated()
   });
 });
+
+//GETTING USER REVIEWS INPUT
+// router.get('/reviews', function(req, res) {
+//   Review.findAll().then(function(reviews) {
+//     res.render('yelp-business', {
+//       user: req.user,
+//       isAuthenticated: req.isAuthenticated(),
+//       reviews: reviews
+//     });
+//   });
+// });
 
 /*********************
      POST ROUTES
@@ -46,6 +57,25 @@ router.post('/', passport.authenticate('local', {
   failureRedirect: '/?msg=Login Credentials do not work'
 }));
 
+//REVIEWS POST
+router.post('/:business/reviews', function(req, res) {
+
+    Review.create(req.body).then(function(review){
+      var comment = req.body.comment;
+      console.log(comment);
+      req.session.authenticated = review;
+      res.redirect(BUSINESS_NAME)
+      res.render('yelp-business', {
+        reviews: comment,
+        layout: 'yelp-business'
+
+    });
+  }).catch(function(err){
+      res.redirect("/?msg=" + err);
+      console.log(err);
+  });
+})
+
 
 /*********************
      GET Yelp
@@ -61,7 +91,7 @@ router.get('/yelp', function(req, res) {
      POST Yelp
 *********************/
 router.post('/yelp', function(req, res) {
-  console.log(req.body);
+  // console.log(req.body);
   client.search({
     term: req.body.find,
     location: 'New Brunswick, New Jersey',
@@ -71,7 +101,7 @@ router.post('/yelp', function(req, res) {
 
     res.render('yelp', {
       msg: req.query.msg,
-      layout: 'yelp-business',
+      layout: 'yelp-search',
       results: businesses
     });
   });
