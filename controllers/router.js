@@ -13,7 +13,8 @@ var Review = require('../models/review');
 //get routes
 router.get('/', function(req, res) {
   if (req.user) {
-    res.redirect('/welcome');  
+    res.redirect('/welcome');
+    return;
   }
   res.render('registration', {
     msg: req.query.msg
@@ -22,9 +23,9 @@ router.get('/', function(req, res) {
 
 //ROUTE TO INDEX
 router.get('/welcome', function(req, res) {
-  console.log(req.session);
 if (!req.user) {
   res.redirect('/');
+  return;
 }
   var username = req.user.id;
   res.render('welcome', {
@@ -33,6 +34,12 @@ if (!req.user) {
     name: username,
     layout: 'welcome-layout'
   });
+});
+
+//Log Out
+router.get('/logout', function(req, res){
+  req.logout();
+  res.redirect('/');
 });
 
 //GETTING USER REVIEWS INPUT
