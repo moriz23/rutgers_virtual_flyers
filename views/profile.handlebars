@@ -1,0 +1,44 @@
+{{#each user}}
+  <div class="row">
+    <div class="col s4">
+      <div class="card">
+        <div class="card-image">
+          <img src="../public/images/blank.jpg" class="responsive-img">
+          <span class="card-title">{{this.dataValues.firstname}} {{this.dataValues.lastname}}</span>
+        </div>
+        <div class="card-content">
+          <p>I am a very simple card. I am good at containing small bits of information. I am convenient because I require little markup to use effectively.</p>
+        </div>
+        <div class="card-action">
+          <p>Created Accout: {{this.createdAt}}</p>
+        </div>
+      </div>
+    </div>
+    <div class="col s6 offset-s2" id="interest">
+      <p class="center-align">About</p>
+      <div class="divider"></div>
+      <ul class="collection">
+        <li class="collection-item"><span class="profile-list">Friends:</span></li>
+      </ul>
+      <ul class="collection">
+        <li class="collection-item"><span class="profile-list">Reviews:</span></li>
+      </ul>
+      <ul class="collection">
+        <li class="collection-item"><span class="profile-list">Location:</span></li>
+      </ul>
+      <ul class="collection">
+        <li class="collection-item"><span class="profile-list">Average Score:</span></li>
+      </ul>
+    </div>
+
+  </div>
+{{/each}}
+<form action="/profile/:user" method="POST">
+  <div class="input-field col s6 m4 black-text">
+    <input type="text" name="location" class="validate" required="true">
+    <label for="firstname">location</label>
+  </div>
+  <div class="input-field col s12 m8">
+    <button class="btn waves-effect waves-light id" type="submit">Sign up!
+  </div>
+</form>
