@@ -25,6 +25,13 @@ router.get('/index', function(req, res) {
   });
 });
 
+//ROUTE TO INDEX FOR NON REGISTER
+router.get('/non-register', function(req, res) {
+  res.render('index', {
+    msg: req.query.msg
+  });
+});
+
 //GETTING USER REVIEWS INPUT
 // router.get('/reviews', function(req, res) {
 //   Review.findAll().then(function(reviews) {
@@ -46,7 +53,7 @@ router.post('/save', function(req, res) {
     req.session.authenticated = user;
     res.redirect('/index');
   }).catch(function(err) {
-    res.redirect("/?msg=" + err);
+    res.redirect("/?msg==Username already exist");
     console.log(err);
   });
 });
